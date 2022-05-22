@@ -1,28 +1,28 @@
-package insertionsort
+// package insertionsort
 
-// Sort - Uses selection sort algorithm to sort a list and return the sorted list
-func Sort(values []int) []int {
-	startIndex := 1
+// // Sort - Uses selection sort algorithm to sort a list and return the sorted list
+// func Sort(values []int) []int {
+// 	startIndex := 1
 
-	for {
+// 	for {
 
-		startItem := values[startIndex]
+// 		startItem := values[startIndex]
 
-		for index, item := range values {
+// 		for index, item := range values {
 
-			if index > startIndex {
-				continue
-			}
+// 			if index > startIndex {
+// 				continue
+// 			}
 
-			if item < startItem {
-				values[index+1] = item
+// 			if item < startItem {
+// 				values[index+1] = item
 
-			}
+// 			}
 
-		}
+// 		}
 
-		startIndex++
-	}
+// 		startIndex++
+// 	}
 
-	return values
-}
+// 	return values
+// }
