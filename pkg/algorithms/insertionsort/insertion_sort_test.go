@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Kenjasim/data-structures-and-algorithms/pkg/algorithms/selectionsort"
+	"github.com/Kenjasim/data-structures-and-algorithms/pkg/algorithms/insertionsort"
 )
 
 // testSort - tests the sort function
@@ -29,7 +29,7 @@ func TestSort(t *testing.T) {
 	}
 
 	for _, testcase := range testcases {
-		sortedValues := selectionsort.Sort(testcase.values)
+		sortedValues := insertionsort.Sort(testcase.values)
 
 		if !reflect.DeepEqual(sortedValues, testcase.expectedValues) {
 			t.Fatalf("List %v does not match expected list %v", sortedValues, testcase.expectedValues)
