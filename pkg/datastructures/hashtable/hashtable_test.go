@@ -91,3 +91,40 @@ func TestBucketAppend(t *testing.T) {
 	}
 
 }
+
+// TestHashTablePut - Test putting to a hash table
+func TestHashTablePut(t *testing.T) {
+
+	testcases := []struct {
+		nodeToAppend   *Node
+		expectedBucket Bucket
+		expectedIndex  int
+	}{
+		{
+			nodeToAppend:   &Node{Key: "foo", Value: "var"},
+			expectedBucket: Bucket{values: []*Node{{Key: "foo", Value: "var"}}},
+			expectedIndex:  24,
+		},
+	}
+
+	for _, testcase := range testcases {
+
+		ht := New()
+
+		ht.Put(testcase.nodeToAppend.Key, testcase.nodeToAppend.Value)
+
+		// If the values in the expected index arent stored propperly then return nil
+		if ht.values[testcase.expectedIndex] == nil {
+			t.Fatal()
+		}
+
+		// Check if the item is in the hashtable
+		for index, item := range ht.values[testcase.expectedIndex].values {
+			expectedItem := testcase.expectedBucket.values[index]
+			if item.Key != expectedItem.Key || item.Value != expectedItem.Value {
+				t.Fatalf("Value in bucket %v, %v not deeply equal to value %v in bucket %v", ht.values[testcase.expectedIndex].values, item, expectedItem, testcase.expectedBucket.values)
+			}
+		}
+	}
+
+}
